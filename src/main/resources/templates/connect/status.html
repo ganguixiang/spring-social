@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:social="http://spring.io/springsocial"
+      >
+<head>
+    <meta charset="UTF-8" />
+    <title>Spring Social Showcase</title>
+</head>
+<body>
+<div id="header">
+    <h1><a th:href="@{/}">Spring Social Showcase</a></h1>
+</div>
+
+<div id="content">
+    <h3>Your Connections</h3>
+    <!-- TODO: Thymeleaf seems to be tacking local/language on the end of properties..."facebook.displayName_en_US"...BECAUSE it's looking up a property and can't find it!!! -->
+    <div class="accountConnection" th:each="providerId : ${providerIds}">
+        <h4><span th:text="${providerId}">provider name</span></h4>
+        <p>
+            Click <a th:href="@{'/connect/' + ${providerId}}">here</a> to manage your <span th:text="${providerId}">provider name</span> connection.
+        </p>
+    </div>
+</div>
+</body>
+</html>
